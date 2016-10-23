@@ -20,6 +20,13 @@ namespace MVCHOMEWORK.Controllers
             return View(db.客戶資料.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string keyword)
+        {
+            var Result = db.客戶資料.Where(客 => 客.客戶名稱.Contains(keyword));
+            return View(Result.ToList());
+        }
+
         // GET: CustomerInfo/Details/5
         public ActionResult Details(int? id)
         {

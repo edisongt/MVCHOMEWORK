@@ -7,8 +7,15 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增客戶銀行資訊", "Create")
 </p>
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Label("銀行名稱")<input type="text" id="keyword" name="keyword" value=""   placeholder="請輸入銀行名稱" />
+    <input type="submit" value="搜尋" />
+}
+
 <table class="table">
     <tr>
         <th>

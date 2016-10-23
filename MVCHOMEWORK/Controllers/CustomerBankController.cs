@@ -21,6 +21,14 @@ namespace MVCHOMEWORK.Controllers
             return View(客戶銀行資訊.ToList());
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Index(string keyword)
+        {
+            var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.銀行名稱.Contains(keyword));
+            return View(客戶銀行資訊.ToList());
+        }
+
         // GET: CustomerBank/Details/5
         public ActionResult Details(int? id)
         {

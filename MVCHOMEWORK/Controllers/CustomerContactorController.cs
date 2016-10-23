@@ -16,8 +16,20 @@ namespace MVCHOMEWORK.Controllers
 
         // GET: CustomerContactor
         public ActionResult Index()
-        { 
-            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
+        {
+           
+            return View(db.客戶聯絡人.ToList());
+        }
+
+        /// <summary>
+        /// 加入可搜尋列表功能
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Index(string keyword)
+        {
+            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料).Where(x => x.姓名.Contains(keyword));
             return View(客戶聯絡人.ToList());
         }
 
