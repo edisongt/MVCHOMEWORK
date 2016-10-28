@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CustomerBankController.cs" />
     <Compile Include="Controllers\CustomerContactorController.cs" />
     <Compile Include="Controllers\CustomerInfoController.cs" />
+    <Compile Include="Controllers\GenneralListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +223,7 @@
     <Compile Include="Models\vw_CustomerContactorBankCount.cs">
       <DependentUpon>Cutomer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\客戶明細總表.Partial.cs" />
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>Cutomer.tt</DependentUpon>
     </Compile>
@@ -334,6 +336,7 @@
     <Content Include="Views\CustomerBank\Details.cshtml" />
     <Content Include="Views\CustomerBank\Edit.cshtml" />
     <Content Include="Views\CustomerBank\Index.cshtml" />
+    <Content Include="Views\GenneralList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

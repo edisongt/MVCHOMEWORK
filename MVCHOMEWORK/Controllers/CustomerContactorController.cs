@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -18,7 +19,7 @@ namespace MVCHOMEWORK.Controllers
         public ActionResult Index()
         {
            
-            return View(db.客戶聯絡人.ToList());
+            return View(db.客戶聯絡人.Where(x => x.是否已刪除 == false).ToList());
         }
 
         /// <summary>
@@ -126,9 +127,18 @@ namespace MVCHOMEWORK.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            db.客戶聯絡人.Remove(客戶聯絡人);
-            db.SaveChanges();
+            try
+            {
+                客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
+                客戶聯絡人.是否已刪除 = true;
+                db.Entry(客戶聯絡人).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+                throw;
+            }
             return RedirectToAction("Index");
         }
 
