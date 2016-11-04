@@ -17,6 +17,7 @@ namespace MVCHOMEWORK.Controllers
         // GET: CustomerInfo
         public ActionResult Index()
         {
+            
             return View(db.客戶資料.Where(x=> x.是否已刪除 == false).Take(10));
         }
 
